@@ -9,7 +9,7 @@
     "Echo",
     "rico"
   ],
-  "DownloadLinkInstall": "https://github.com/wolfricoz/EmoteLog/releases/download/first/latest.zip",
-  "DownloadLinkTesting": "https://github.com/wolfricoz/EmoteLog/releases/download/first/latest.zip",
-  "DownloadLinkUpdate": "https://github.com/wolfricoz/EmoteLog/releases/download/first/latest.zip"
+  "DownloadLinkInstall": "https://github.com/wolfricoz/EmoteLog/releases/download/release/latest.zip",
+  "DownloadLinkTesting": "https://github.com/wolfricoz/EmoteLog/releases/download/release/latest.zip",
+  "DownloadLinkUpdate": "https://github.com/wolfricoz/EmoteLog/releases/download/release/latest.zip"
 }
