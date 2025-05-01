@@ -1,0 +1,25 @@
+﻿[
+  {
+  {
+    "Author": "Speedas, Edited by Rico Stryker",
+    "Name": "Echo Emote log",
+    "Punchline": "Shows all emotes used in the instance and who used them.",
+    "Description": "Shows all emotes used in the instance and who used them.",
+    "Changelog": "",
+    "InternalName": "EchoEmoteLog",
+    "AssemblyVersion": "1.1.2.11",
+    "RepoUrl": "https://github.com/wolfricoz/EmoteLog",
+    "ApplicableVersion": "any",
+    "CategoryTags": [
+      "EmoteLog",
+      "Echo",
+      "rico"
+    ],
+    "DalamudApiLevel": 12,
+    "DownloadLinkInstall": "https://github.com/wolfricoz/EmoteLog/releases/download/release/latest.zip",
+    "IsHide": false,
+    "IsTestingExclusive": false,
+    "DownloadLinkTesting": "https://github.com/wolfricoz/EmoteLog/releases/download/release/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/wolfricoz/EmoteLog/releases/download/release/latest.zip"
+  }
+]
