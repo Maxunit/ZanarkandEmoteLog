@@ -3,6 +3,7 @@
 
   <PropertyGroup>
     <Version>1.1.4.0</Version>
+    <AssemblyName>EchoEmoteLog</AssemblyName>
     <PackageProjectUrl>https://github.com/RokasKil/EmoteLog</PackageProjectUrl>
     <TargetFramework>net9.0-windows</TargetFramework>
   </PropertyGroup>

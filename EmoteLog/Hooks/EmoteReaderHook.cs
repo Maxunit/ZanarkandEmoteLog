@@ -35,14 +35,13 @@ namespace EmoteLog.Hooks
 
             if (PluginServices.ClientState.LocalPlayer != null)
             {
-                if (targetId == PluginServices.ClientState.LocalPlayer.GameObjectId)
-                {
+
                     var instigatorOb = PluginServices.ObjectTable.FirstOrDefault(x => (ulong)x.Address == instigatorAddr);
                     if (instigatorOb is IPlayerCharacter playerCharacter)
                     {
                         OnEmote?.Invoke(playerCharacter, emoteId);
                     }
-                }
+                
             }
 
             hookEmote.Original(unk, instigatorAddr, emoteId, targetId, unk2);
