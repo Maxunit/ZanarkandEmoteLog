@@ -6,6 +6,7 @@ permissions:
 
 on:
   workflow_dispatch:
+  push:
     paths-ignore:
       - '*.md'
     branches:
