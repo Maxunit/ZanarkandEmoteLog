@@ -15,9 +15,9 @@ on:
       - release
 
 env:
-  INTERNAL_NAME: XIVComboVX
+  INTERNAL_NAME: EmoteLog
   CONFIGURATION: Release
-  PERSONAL_PLUGIN_REPO: PrincessRTFM/MyDalamudPlugins
+  PERSONAL_PLUGIN_REPO: Maxunit/MyDalamudPlugins
   DOTNET_CLI_TELEMETRY_OPTOUT: true
   DOTNET_NOLOGO: true
 
