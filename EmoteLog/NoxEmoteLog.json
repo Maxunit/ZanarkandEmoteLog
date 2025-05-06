@@ -1,0 +1,16 @@
+{
+  "Author": "Speedas, Edited by Rico Stryker, Renamed by Maxunit",
+  "Name": "Nox Emote log",
+  "Description": "Shows all emotes used in the instance and who used them.",
+  "Punchline": "Shows all emotes used in the instance and who used them.",
+  "RepoUrl": "https://github.com/Maxunit/NoxEmoteLog",
+  "Tags": [
+    "EmoteLog",
+    "Nox",
+    "rico",
+	"maxunit"
+  ],
+  "DownloadLinkInstall": "https://github.com/Maxunit/NoxEmoteLog/releases/download/release/latest.zip",
+  "DownloadLinkTesting": "https://github.com/Maxunit/NoxEmoteLog/releases/download/release/latest.zip",
+  "DownloadLinkUpdate": "https://github.com/Maxunit/NoxEmoteLog/releases/download/release/latest.zip"
+}

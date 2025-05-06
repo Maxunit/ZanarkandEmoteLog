@@ -14,7 +14,7 @@ namespace EmoteLog
 
         public IDalamudPluginInterface PluginInterface { get; init; }
         public Configuration Configuration { get; init; }
-        public WindowSystem WindowSystem = new("EchoEmoteLog");
+        public WindowSystem WindowSystem = new("NoxEmoteLog");
 
         private ConfigWindow ConfigWindow { get; init; }
         private EmoteLogWindow MainWindow { get; init; }

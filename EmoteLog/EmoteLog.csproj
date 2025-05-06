@@ -3,8 +3,8 @@
 
   <PropertyGroup>
     <Version>1.1.4.0</Version>
-    <AssemblyName>EchoEmoteLog</AssemblyName>
-    <PackageProjectUrl>https://github.com/RokasKil/EmoteLog</PackageProjectUrl>
+    <AssemblyName>NoxEmoteLog</AssemblyName>
+    <PackageProjectUrl>https://github.com/Maxunit/NoxEmoteLog</PackageProjectUrl>
     <TargetFramework>net9.0-windows</TargetFramework>
   </PropertyGroup>
 </Project>
