@@ -1,58 +1,24 @@
 name: Build
 
 # Put your personal access token in a repository secret named PAT for cross-repository access
-permissions:
-  contents: write
 
-on:
+on: 
   workflow_dispatch:
   push:
-    paths-ignore:
-      - '*.md'
     branches:
-      - master
-      - main
-      - release
+    - master
 
 env:
-  INTERNAL_NAME: EmoteLog
-  RELEASE_NAME: NoxEmoteLog
-  CONFIGURATION: Release
+  PUBLIC_NAME: NoxEmoteLog
+  SOLUTION_NAME: EmoteLog
+  INTERNAL_NAME: NoxEmoteLog
+  RELEASE_DIR: EmoteLog\bin\x64\Release\NoxEmoteLog
   PERSONAL_PLUGIN_REPO: Maxunit/MyDalamudPlugins
+  PR_PLUGIN_REPO: Maxunit/DalamudPlugins
   DOTNET_CLI_TELEMETRY_OPTOUT: true
-  DOTNET_NOLOGO: true
 
 jobs:
-  precheck:
-    runs-on: ubuntu-latest
-    outputs:
-      buildVersion: ${{ steps.data.outputs.buildVersion }}
-      tagName: ${{ steps.data.outputs.tagName }}
-      tagExists: ${{ steps.check-version-tag.outputs.tagExists }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Load values
-        id: data
-        run: |
-          buildVersion=$(grep -Ei '<version>[^<]+</version>' "${{ env.INTERNAL_NAME }}/${{ env.INTERNAL_NAME }}.csproj" | sed -e 's/.\+<version>\([^<]\+\)<.\+/\1/i' -)
-          echo "buildVersion=$buildVersion" >> "$GITHUB_OUTPUT"
-          echo "tagName=v$buildVersion" >> "$GITHUB_OUTPUT"
-        shell: bash
-      - name: Check if version exists
-        id: check-version-tag
-        run: |
-          if git show-ref --quiet --tags "${{ steps.data.outputs.tagName }}"; then echo "tagExists=true" >> "$GITHUB_OUTPUT"; else echo "tagExists=false" >> "$GITHUB_OUTPUT"; fi
-        shell: bash
-      - name: Debug
-        run: |
-          echo "Current version is ${{ steps.data.outputs.buildVersion }} for tag ${{ steps.data.outputs.tagName }} (exists = ${{ steps.check-version-tag.outputs.tagExists }})"
-        shell: bash
   build:
-    needs: precheck
-    if: needs.precheck.outputs.tagExists == 'false'
     runs-on: windows-2022
     steps:
     - name: Checkout
@@ -60,55 +26,39 @@ jobs:
       with:
         submodules: recursive
     - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@v1.1.3
+      uses: microsoft/setup-msbuild@v1.0.2
     - name: Download Dalamud
       run: |
-        Invoke-WebRequest -Uri https://goatcorp.github.io/dalamud-distrib/latest.zip -OutFile latest.zip
-        Expand-Archive -Force latest.zip "$env:AppData\XIVLauncher\addon\Hooks\dev\"
-    - name: Restore
-      run: dotnet restore -r win
+        Invoke-WebRequest -Uri https://goatcorp.github.io/dalamud-distrib/stg/latest.zip -OutFile latest.zip
+        Expand-Archive -Force latest.zip "$env:AppData\XIVLauncher\addon\Hooks\dev\"   
     - name: Build
-      run: dotnet build -c ${{ env.CONFIGURATION }} --no-restore
-    - name: Upload build
-      uses: actions/upload-artifact@v4
+      run: |
+        dotnet restore -r win ${{ env.SOLUTION_NAME }}.sln
+        dotnet build --configuration Release
+    - name: Test
+      run: |
+        dotnet test --no-restore --verbosity normal
+    - uses: actions/upload-artifact@v4
       with:
         name: PluginRepoZip
-        path: ${{ env.INTERNAL_NAME }}/bin/x64//${{ env.CONFIGURATION }}/${{ env.RELEASE_NAME }}
+        path: ${{ env.RELEASE_DIR }}
         if-no-files-found: error
-        retention-days: 14
-    - name: Tag
-      run: |
-        git tag -am "[Automated build $BUILD_VERSION]" "$TAG_NAME"
-        git push origin "$TAG_NAME"
-      shell: bash
-      env:
-        BUILD_VERSION: ${{ needs.precheck.outputs.buildVersion }}
-        TAG_NAME: ${{ needs.precheck.outputs.tagName }}
-        GIT_AUTHOR_NAME: GitHub Action
-        GIT_COMMITTER_NAME: GitHub Action
-        GIT_AUTHOR_EMAIL: github-actions[bot]@users.noreply.github.com
-        GIT_COMMITTER_EMAIL: github-actions[bot]@users.noreply.github.com
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+    - uses: actions/checkout@v4
       with:
-        ref: master
         repository: ${{ env.PERSONAL_PLUGIN_REPO }}
         token: ${{ secrets.PAT }}
-    - name: Download build
-      uses: actions/download-artifact@v4
+    - uses: actions/download-artifact@v4
       with:
         name: PluginRepoZip
         path: plugins/${{ env.INTERNAL_NAME }}
-    - name: Commit
-      uses: EndBug/add-and-commit@v9
+    - uses: EndBug/add-and-commit@v7
       with:
-        add: plugins/
-        pathspec_error_handling: exitImmediately
+        add: --all
         author_name: GitHub Action
         author_email: github-actions[bot]@users.noreply.github.com
         message: Update ${{ env.INTERNAL_NAME }}
