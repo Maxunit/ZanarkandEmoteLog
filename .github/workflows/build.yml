@@ -9,10 +9,10 @@ on:
     - master
 
 env:
-  PUBLIC_NAME: NoxEmoteLog
+  PUBLIC_NAME: ZanarkandEmoteLog
   SOLUTION_NAME: EmoteLog
-  INTERNAL_NAME: NoxEmoteLog
-  RELEASE_DIR: EmoteLog\bin\x64\Release\NoxEmoteLog
+  INTERNAL_NAME: ZanarkandEmoteLog
+  RELEASE_DIR: EmoteLog\bin\x64\Release\ZanarkandEmoteLog
   PERSONAL_PLUGIN_REPO: Maxunit/MyDalamudPlugins
   PR_PLUGIN_REPO: Maxunit/DalamudPlugins
   DOTNET_CLI_TELEMETRY_OPTOUT: true
