@@ -14,7 +14,7 @@ namespace EmoteLog
 
         public IDalamudPluginInterface PluginInterface { get; init; }
         public Configuration Configuration { get; init; }
-        public WindowSystem WindowSystem = new("NoxEmoteLog");
+        public WindowSystem WindowSystem = new("Zanarkand EmoteLog");
 
         private ConfigWindow ConfigWindow { get; init; }
         private EmoteLogWindow MainWindow { get; init; }
@@ -38,7 +38,7 @@ namespace EmoteLog
             WindowSystem.AddWindow(MainWindow);
             PluginServices.CommandManager.AddHandler(CommandName, new CommandInfo(OnCommand)
             {
-                HelpMessage = $"Opens the Nox Emote Log window, \"{CommandName} config\" to open settings and \"{CommandName} clear\" to clear the log"
+                HelpMessage = $"Opens the Zanarkand Emote Log window, \"{CommandName} config\" to open settings and \"{CommandName} clear\" to clear the log"
             });
 
             PluginInterface.UiBuilder.Draw += WindowSystem.Draw;
@@ -87,7 +87,7 @@ namespace EmoteLog
             }
             else
             {
-                PluginServices.ChatGui.PrintError($"[Nox Emote Log] Unknown argument: \"{args}\"");
+                PluginServices.ChatGui.PrintError($"[Zanarkand Emote Log] Unknown argument: \"{args}\"");
             }
         }
         private void ToggleMainWindow()
@@ -96,11 +96,11 @@ namespace EmoteLog
             {
                 if (!MainWindow.IsOpen)
                 {
-                    PluginServices.ChatGui.Print("[Nox Emote Log] Emote Log window opened, but your configuration is currently hiding it.");
+                    PluginServices.ChatGui.Print("[Zanarkand Emote Log] Emote Log window opened, but your configuration is currently hiding it.");
                 }
                 else
                 {
-                    PluginServices.ChatGui.Print("[Nox Emote Log] Emote Log window closed, your configuration was hiding it.");
+                    PluginServices.ChatGui.Print("[Zanarkand Emote Log] Emote Log window closed, your configuration was hiding it.");
                 }
             }
             MainWindow.Toggle();

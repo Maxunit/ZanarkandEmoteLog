@@ -15,7 +15,7 @@ public class ConfigWindow : Window, IDisposable
     private Plugin Plugin { get; set; }
 
     public ConfigWindow(Plugin plugin) : base(
-        "Nox Emote log configuration",
+        "Zanarkand Emote Log Configuration",
         ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoScrollbar |
         ImGuiWindowFlags.NoScrollWithMouse | ImGuiWindowFlags.AlwaysAutoResize)
     {
@@ -68,12 +68,12 @@ public class ConfigWindow : Window, IDisposable
             Configuration.ShowTimestamps = showTimestamps;
             Configuration.Save();
         }
-        if (ImGui.Checkbox("Show clear button in the Nox Emote Log", ref showClearButton))
+        if (ImGui.Checkbox("Show clear button in the Zanarkand Emote Log", ref showClearButton))
         {
             Configuration.ShowClearButton = showClearButton;
             Configuration.Save();
         }
-        if (ImGui.Checkbox("Wrap Nox Emote Log text", ref wrapText))
+        if (ImGui.Checkbox("Wrap Zanarkand Emote Log text", ref wrapText))
         {
             Configuration.WrapText = wrapText;
             Configuration.Save();
@@ -90,37 +90,37 @@ public class ConfigWindow : Window, IDisposable
             Configuration.OpenOnLogin = openOnLogin;
             Configuration.Save();
         }
-        if (ImGui.Checkbox("Allow moving the Nox Emote Log", ref moveWindow))
+        if (ImGui.Checkbox("Allow moving the Zanarkand Emote Log", ref moveWindow))
         {
             Configuration.MoveWindow = moveWindow;
             Configuration.Save();
         }
-        if (ImGui.Checkbox("Allow resizing the Nox Emote Log", ref resizeWindow))
+        if (ImGui.Checkbox("Allow resizing the Zanarkand Emote Log", ref resizeWindow))
         {
             Configuration.ResizeWindow = resizeWindow;
             Configuration.Save();
         }
-        if (ImGui.Checkbox("Show Nox Emote Log's frames", ref showWindowFrames))
+        if (ImGui.Checkbox("Show Zanarkand Emote Log's frames", ref showWindowFrames))
         {
             Configuration.ShowWindowFrames = showWindowFrames;
             Configuration.Save();
         }
-        if (ImGui.Checkbox("Show Nox Emote Log in combat", ref inCombat))
+        if (ImGui.Checkbox("Show Zanarkand Emote Log in combat", ref inCombat))
         {
             Configuration.InCombat = inCombat;
             Configuration.Save();
         }
-        if (ImGui.Checkbox("Show Nox Emote Log in instance", ref inInstance))
+        if (ImGui.Checkbox("Show Zanarkand Emote Log in instance", ref inInstance))
         {
             Configuration.InInstance = inInstance;
             Configuration.Save();
         }
-        if (ImGui.Checkbox("Show Nox Emote Log in cutscene", ref inCutscenes))
+        if (ImGui.Checkbox("Show Zanarkand Emote Log in cutscene", ref inCutscenes))
         {
             Configuration.InCutscenes = inCutscenes;
             Configuration.Save();
         }
-        if (ImGui.Checkbox("Hide Nox Emote Log when empty", ref hideEmpty))
+        if (ImGui.Checkbox("Hide Zanarkand Emote Log when empty", ref hideEmpty))
         {
             Configuration.HideEmpty = hideEmpty;
             Configuration.Save();
@@ -136,7 +136,7 @@ public class ConfigWindow : Window, IDisposable
         if (useCustomFontSize)
         {
             ImGui.SetNextItemWidth(120f);
-            if (ImGui.InputFloat("Nox Emote Log font size", ref fontSize, 1f, 2f, "%.1fpt"))
+            if (ImGui.InputFloat("Zanarkand Emote Log font size", ref fontSize, 1f, 2f, "%.1fpt"))
             {
                 fontSize = Math.Max(fontSize, 1f);
                 Configuration.FontSize = fontSize;

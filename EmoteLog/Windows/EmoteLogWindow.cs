@@ -20,7 +20,7 @@ public class EmoteLogWindow : Window, IDisposable
     private IFontHandle iconFont;
 
     public EmoteLogWindow(Plugin plugin) : base(
-        "Nox Emote Log", ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse)
+        "Zanarkand Emote Log", ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse)
     {
         this.SizeConstraints = new WindowSizeConstraints
         {
@@ -128,7 +128,7 @@ public class EmoteLogWindow : Window, IDisposable
 
                 if (ImGui.IsItemHovered())
                 {
-                    ImGui.SetTooltip("Clear Nox Emote Log");
+                    ImGui.SetTooltip("Clear Zanarkand Emote Log");
                 }
             }
 
