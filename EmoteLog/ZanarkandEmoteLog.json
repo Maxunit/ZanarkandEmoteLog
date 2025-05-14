@@ -1,12 +1,12 @@
 {
   "Author": "Speedas, Edited by Rico Stryker, Renamed by Maxunit",
-  "Name": "Nox Emote log",
+  "Name": "Zanarkand Emote log",
   "Description": "Shows all emotes used in the instance and who used them.",
   "Punchline": "Shows all emotes used in the instance and who used them.",
   "RepoUrl": "https://github.com/Maxunit/NoxEmoteLog",
   "Tags": [
     "EmoteLog",
-    "Nox",
+    "Zanarkand",
     "rico",
 	"maxunit"
   ],
